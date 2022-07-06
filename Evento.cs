@@ -8,11 +8,12 @@ namespace csharp_gestore_eventi
 {
     internal class Evento
     {
+        private string titolo;
         public string Titolo
         {
             get
             {
-                return this.Titolo;
+                return this.titolo;
             }
 
             set
@@ -21,12 +22,12 @@ namespace csharp_gestore_eventi
                 {
                     if (value != "")
                     {
-                        this.Titolo = value;
+                        this.titolo = value;
                     }
                     else
                     {
                         throw new Exception("Il titolo non può essere vuoto.");
-                    }
+                    } 
                 }
                 catch(Exception e)
                 {
@@ -35,11 +36,13 @@ namespace csharp_gestore_eventi
             }
         }
 
+        private DateTime data;
+
         public DateTime Data
         {
             get
             {
-                return this.Data;
+                return this.data;
             }
 
             set
@@ -48,7 +51,7 @@ namespace csharp_gestore_eventi
                 {
                     if (DateTime.Compare(value, DateTime.Now) >= 0)
                     {
-                        this.Data = value;
+                        this.data = value;
                     }
                     else
                     {
@@ -62,11 +65,13 @@ namespace csharp_gestore_eventi
             }
         }
 
+        private int capienzaMassima;
+
         public int CapienzaMassima
         {
             get
             {
-                return this.CapienzaMassima;
+                return this.capienzaMassima;
             }
 
             private set
@@ -75,7 +80,7 @@ namespace csharp_gestore_eventi
                 {
                     if (value > 0)
                     {
-                        this.CapienzaMassima = value;
+                        this.capienzaMassima = value;
                     }
                     else
                     {
@@ -139,7 +144,7 @@ namespace csharp_gestore_eventi
                     }
                     else
                     {
-                        throw new Exception("Non ci sono prenotazioni da disdire sufficienti.");
+                        throw new Exception("Non ci sono prenotazioni da disdire a sufficienza.");
                     }
                 }
                 else
@@ -156,6 +161,12 @@ namespace csharp_gestore_eventi
         public override string ToString()
         {
             return Data.ToString("dd/MM/yyyy") + " - " + Titolo;
+        }
+
+        public void StampaPosti()
+        {
+            Console.WriteLine($"\nPosti prenotati: {this.NumPostiPrenotati}");
+            Console.WriteLine($"Posti disponibili: {this.CapienzaMassima - this.NumPostiPrenotati}");
         }
     }
 }
