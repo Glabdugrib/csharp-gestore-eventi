@@ -13,7 +13,7 @@ namespace csharp_gestore_eventi
         {
             get
             {
-                return this.titolo;
+                return titolo;
             }
 
             set
@@ -22,7 +22,7 @@ namespace csharp_gestore_eventi
                 {
                     if (value != "")
                     {
-                        this.titolo = value;
+                        titolo = value;
                     }
                     else
                     {
@@ -42,7 +42,7 @@ namespace csharp_gestore_eventi
         {
             get
             {
-                return this.data;
+                return data;
             }
 
             set
@@ -51,7 +51,7 @@ namespace csharp_gestore_eventi
                 {
                     if (DateTime.Compare(value, DateTime.Now) >= 0)
                     {
-                        this.data = value;
+                        data = value;
                     }
                     else
                     {
@@ -71,7 +71,7 @@ namespace csharp_gestore_eventi
         {
             get
             {
-                return this.capienzaMassima;
+                return capienzaMassima;
             }
 
             private set
@@ -80,7 +80,7 @@ namespace csharp_gestore_eventi
                 {
                     if (value > 0)
                     {
-                        this.capienzaMassima = value;
+                        capienzaMassima = value;
                     }
                     else
                     {
