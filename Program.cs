@@ -5,15 +5,7 @@
         static void Main(string[] args)
         {
             // Creazione evento
-            Console.WriteLine("\n* Creazione evento *\n");
-            Console.Write("Titolo: ");
-            string titolo = Console.ReadLine();
-            Console.Write("Data (gg/mm/yyyy): ");
-            DateTime data = Convert.ToDateTime(Console.ReadLine());
-            Console.Write("Capienza massima: ");
-            int capienzaMassima = Convert.ToInt32(Console.ReadLine());
-
-            Evento evento = new Evento(titolo, data, capienzaMassima);
+            /*Evento evento = Evento.CreaEvento();
 
 
             // Prenotazione
@@ -72,6 +64,44 @@
             evento.StampaPosti();
 
             Console.WriteLine("\n" + evento.ToString());
+            */
+
+            Console.WriteLine("\n* Creazione programma eventi *\n");
+            Console.Write("Titolo: ");
+            string titoloProgramma = Console.ReadLine();
+
+            ProgrammaEventi programma = new ProgrammaEventi(titoloProgramma);
+
+            Console.Write("\nQuanti eventi vuoi creare? ");
+            int numeroEventi = Convert.ToInt32(Console.ReadLine());
+
+            for(int i = 0; i < numeroEventi; i++)
+            {
+                // crea evento
+                try
+                {
+                    Evento nuovoEvento = Evento.CreaEvento();
+                    programma.Eventi.Add(nuovoEvento);
+                }
+                catch(Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                }
+            }
+
+            Console.WriteLine("\nInserimento eventi completato!");
+
+            Console.WriteLine($"\nNumero di eventi: {programma.ContaEventi()}");
+
+            Console.WriteLine("\n" + programma.DettaglioProgramma());
+
+            Console.Write("\nInserisci una data (gg/mm/yyyy): ");
+            DateTime data = Convert.ToDateTime(Console.ReadLine());
+            List<Evento> listaFiltrata = programma.ListaEventiPerData(data);
+            Console.WriteLine(ProgrammaEventi.ListaEventi(listaFiltrata));
+
+            programma.EliminaEventi();
+            Console.WriteLine("\nEventi eliminati.");
         }
     }
 }

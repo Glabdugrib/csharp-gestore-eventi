@@ -16,7 +16,7 @@ namespace csharp_gestore_eventi
             set { titolo = value; }
         }
 
-        List<Evento> Eventi { get; set; }
+        public List<Evento> Eventi { get; set; }
 
         public ProgrammaEventi(string titolo)
         {

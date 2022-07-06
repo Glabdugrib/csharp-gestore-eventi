@@ -168,5 +168,20 @@ namespace csharp_gestore_eventi
             Console.WriteLine($"\nPosti prenotati: {this.NumPostiPrenotati}");
             Console.WriteLine($"Posti disponibili: {this.CapienzaMassima - this.NumPostiPrenotati}");
         }
+
+        public static Evento CreaEvento()
+        {
+            Console.WriteLine("\n* Creazione evento *\n");
+            Console.Write("Titolo: ");
+            string titolo = Console.ReadLine();
+            Console.Write("Data (gg/mm/yyyy): ");
+            DateTime data = Convert.ToDateTime(Console.ReadLine());
+            Console.Write("Capienza massima: ");
+            int capienzaMassima = Convert.ToInt32(Console.ReadLine());
+
+            Evento evento = new Evento(titolo, data, capienzaMassima);
+
+            return evento;
+        }
     }
 }
